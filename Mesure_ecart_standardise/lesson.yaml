@@ -1,0 +1,139 @@
+- Class: meta
+  Course: TP3-TC-CI
+  Lesson: Mesure ecart standardise
+  Author: Laurent Doyen
+  Type: Standard
+  Organization: IUT2 Grenoble - TC
+  Version: 1
+
+- Class: exact_question
+  Output: Entrer votre numéro d'étudiant.
+  CorrectAnswer: NULL
+  AnswerTests: num_etud()
+  Hint: Entrer votre numéro d'étudiant.
+
+- Class: mult_question
+  Output: swirl va maintenant ouvrir une page web dans votre navigateur internet contenant votre sujet de TP3.
+    Attention, si vous interrompez cette leçon en tapant l'instruction bye(), pensez bien à sauvegarder la page web contenant votre sujet de TP dans votre bookmark.
+    En effet, si vous ne le faites pas vous n'aurez plus accès au sujet de TP à moins de recommencer depuis le début votre leçon swirl.
+    Etes vous pret à commencer cette leçon du TP3. Les questions suivantes correspondent à la partie intitulée "Mesure d'écart standardisé".
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: ouvrir_sujet_TP()
+  Hint: Tapez Oui et validez avec la touche Entrée pour commencer votre TP3.
+
+- Class: cmd_question
+  Output: Réponse à la question 3a.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal = sd(get(e$vs$yy_OQ)[e$vs$j_OQ,])/sqrt(e$vs$n_OQ) )
+  Hint: Réponse à la question 3a.
+
+- Class: cmd_question
+  Output: Réponse à la question 3b.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctExpr =paste0("semu<-apply(",e$vs$yy_OQ,",1,function(x) sd(x)/sqrt(length(x)))",collapse=""))
+  Hint: Réponse à la question 3b.
+
+- Class: cmd_question
+  Output: Réponse à la question 3c.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal =semu[e$vs$j_OQ])
+  Hint: Réponse à la question 3c.
+
+- Class: cmd_question
+  Output: Réponse à la question 3d.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal =(get(e$vs$mu_OQ)[e$vs$j_OQ]-200/3)/(sd(get(e$vs$yy_OQ)[e$vs$j_OQ,])/sqrt(e$vs$n_OQ)))
+  Hint: Réponse à la question 3d.
+
+- Class: cmd_question
+  Output: Réponse à la question 3e.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctExpr =paste0(e$vs$delta_OQ,"<-(",e$vs$mu_OQ,"-200/3)/semu",collapse=""))
+  Hint: Réponse à la question 3e.
+
+- Class: cmd_question
+  Output: Réponse à la question 3f.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctExpr =paste0(e$vs$delta_OQ,"[",e$vs$j_OQ,"]",collapse=""))
+  Hint: Réponse à la question 3f.
+
+- Class: cmd_question
+  Output: Réponse à la question 3g.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|any_of_exprs(paste0("hist(",e$vs$delta_OQ,",freq=F)",collapse=""),paste0("hist(",e$vs$delta_OQ,",freq=FALSE)",collapse=""),paste0("hist(",e$vs$delta_OQ,"[1:",e$vs$m_OQ,"]",",freq=F)",collapse=""),paste0("hist(",e$vs$delta_OQ,"[1:",e$vs$m_OQ,"]",",freq=FALSE)",collapse=""))
+  Hint: Réponse à la question 3g.
+
+- Class: cmd_question
+  Output: Réponse à la question 3h.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctExpr ='curve(dnorm, add=TRUE, col="red")')
+  Hint: Réponse à la question 3h.
+
+- Class: cmd_question
+  Output: Réponse à la question 3j.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal =mean(get(e$vs$delta_OQ)))
+  Hint: Réponse à la question 3j.
+
+- Class: cmd_question
+  Output: Réponse à la question 3l.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal =sd(get(e$vs$delta_OQ)))
+  Hint: Réponse à la question 3l.
+
+- Class: cmd_question
+  Output: Réponse à la question 3o.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal =mean(get(e$vs$delta_OQ) >= e$vs$dmin_OQ & get(e$vs$delta_OQ) <= e$vs$dmax_OQ))
+  Hint: Réponse à la question 3o.
+
+- Class: cmd_question
+  Output: Réponse à la question 3r.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|(omnitest(correctVal = pnorm(e$vs$dmax_OQ)-pnorm(e$vs$dmin_OQ))&expr_uses_func('pnorm'))
+  Hint: Réponse à la question 3r.
+
+- Class: cmd_question
+  Output: Réponse à la question 3t.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|freq_emp()
+  Hint: Réponse à la question 3t.
+
+- Class: cmd_question
+  Output: Réponse à la question 3u.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctExpr =paste0("quantile(",e$vs$delta_OQ,",probs=",e$vs$q_OQ,")",collapse=""))
+  Hint: Réponse à la question 3u.
+
+- Class: cmd_question
+  Output: Réponse à la question 3x.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|(omnitest(correctVal = qnorm(e$vs$q_OQ))&expr_uses_func('qnorm'))
+  Hint: Réponse à la question 3x.
+
+- Class: exact_question
+  Output: Vous allez maintenant valider cette première leçon sur Google Forms afin que votre enseignant sache que vous avez réalisé votre leçon 1 du TP 3. Quelle est votre groupe ?
+  CorrectAnswer: NULL
+  AnswerTests: submit_log()
+  Hint: Tapez votre numéro de groupe entre 1 et 5 et appuyez sur la touche Entrée.
+
+- Class: mult_question
+  Output: Swirl a ouvert une page Google Form dans votre navigateur web. Vous devez valider cette page (sans rien y modifier) en appuyant sur le bouton ENVOYER.
+    Nous vous rappelons que vous ne pouvez valider qu'une seule fois chaque leçon !
+    Avez-vous validé votre Google Form ?
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: email_log()
+  Hint: Vous devez valider le GoogleForm ouvert dans votre navigateur web sans le modifier. L'avez-vous fait ?
+
+- Class: mult_question
+  Output: Swirl a maintenant créé un email dans votre utilitaire de messagerie. Vous devez envoyer cet email, sans le modifier, pour finir de valider cette leçon du TP.
+    Avez-vous envoyé l'email créé par swirl ?
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctVal='Oui')
+  Hint: Vous devez envoyer l'email créé par swirl dans votre messagerie, sans le modifier. L'avez-vous fait ?
+
+- Class: text
+  Output: Normalement vous avez maintenant fini votre TP3!

@@ -1,0 +1,73 @@
+- Class: meta
+  Course: TP3-TC-CI
+  Lesson: Intervalles de confiance
+  Author: Laurent Doyen
+  Type: Standard
+  Organization: IUT2 Grenoble - TC
+  Version: 1
+
+- Class: exact_question
+  Output: Entrer votre numéro d'étudiant.
+  CorrectAnswer: NULL
+  AnswerTests: num_etud()
+  Hint: Entrer votre numéro d'étudiant.
+
+- Class: mult_question
+  Output: swirl va maintenant ouvrir une page web dans votre navigateur internet contenant votre sujet de TP3.
+    Attention, si vous interrompez cette leçon en tapant l'instruction bye(), pensez bien à sauvegarder la page web contenant votre sujet de TP dans votre bookmark.
+    En effet, si vous ne le faites pas vous n'aurez plus accès au sujet de TP à moins de recommencer depuis le début votre leçon swirl.
+    Etes vous pret à commencer cette leçon du TP3. Les questions suivantes correspondent à la partie intitulée "Intervalles de confiance".
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: ouvrir_sujet_TP()
+  Hint: Tapez Oui et validez avec la touche Entrée pour commencer votre TP3.
+
+- Class: cmd_question
+  Output: Réponse à la question 1a.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal =get(e$vs$nom_data))
+  Hint: Réponse à la question 1a.
+
+- Class: cmd_question
+  Output: Réponse à la question 1b.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal =mean(get(e$vs$nom_data)))
+  Hint: Réponse à la question 1b.
+
+- Class: cmd_question
+  Output: Réponse à la question 1d.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|qualite_estimation()
+  Hint: Réponse à la question 1d.
+
+- Class: cmd_question
+  Output: Réponse à la question 1f.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|int_conf()
+  Hint: Réponse à la question 1f.
+
+- Class: exact_question
+  Output: Vous allez maintenant valider cette première leçon sur Google Forms afin que votre enseignant sache que vous avez réalisé votre leçon 1 du TP 3. Quelle est votre groupe ?
+  CorrectAnswer: NULL
+  AnswerTests: submit_log()
+  Hint: Tapez votre numéro de groupe entre 1 et 5 et appuyez sur la touche Entrée.
+
+- Class: mult_question
+  Output: Swirl a ouvert une page Google Form dans votre navigateur web. Vous devez valider cette page (sans rien y modifier) en appuyant sur le bouton ENVOYER.
+    Nous vous rappelons que vous ne pouvez valider qu'une seule fois chaque leçon !
+    Avez-vous validé votre Google Form ?
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: email_log()
+  Hint: Vous devez valider le GoogleForm ouvert dans votre navigateur web sans le modifier. L'avez-vous fait ?
+
+- Class: mult_question
+  Output: Swirl a maintenant créé un email dans votre utilitaire de messagerie. Vous devez envoyer cet email, sans le modifier, pour finir de valider cette leçon du TP.
+    Avez-vous envoyé l'email créé par swirl ?
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctVal='Oui')
+  Hint: Vous devez envoyer l'email créé par swirl dans votre messagerie, sans le modifier. L'avez-vous fait ?
+
+- Class: text
+  Output: Maintenant à vous de faire les leçons suivantes de ce TP3.
