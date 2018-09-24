@@ -73,8 +73,8 @@ num_etud<-function(){
 
       p0<-runif(1,0.3,0.5)
       p1<-(1-p0)*runif(1,0.3,0.4)
-      p2<-(1-p0)*(1-p1)*runif(1,0.2,0.5)
-      p3<-(1-p0)*(1-p1)*(1-p2)*0.5
+      p2<-(1-p0-p1)*runif(1,0.2,0.5)
+      p3<-(1-p0-p1-p2)*0.5
       p4<-1-p0-p1-p2-p3
       z<-rmultinom(vs$n,1,c(p0,p1,p2,p3,p4))
       y<-which(z==1)-(0:(vs$n-1))*5-1
