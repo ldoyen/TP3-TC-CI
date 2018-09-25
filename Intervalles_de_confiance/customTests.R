@@ -45,7 +45,7 @@ num_etud<-function(){
    niv_confiance=c(85,85,85,80,80,80),
    Y=c("Y^A","Y^B","Y^C","Y^D","Y^X","Y^Z"),
  	 y=c("y^A","y^B","y^C","y^D","y^X","y^Z"),
-   nom_data=c("pAest","pB_est","pC_Est","pDEst","p_X_est","pZ_Est"),
+   nom_data=c("yA","y_B","y_C_obs","yD","y_X","y_Z_obs"),
 	 pageWebsujet=c("https://toltex.u-ga.fr/VAM/TP3/sujet.html","https://toltex.u-ga.fr/VAM/TP3/sujet_tp.html","https://toltex.u-ga.fr/VAM/TP3/sujet__tp.html","https://toltex.u-ga.fr/VAM/TP3/sujet3.html","https://toltex.u-ga.fr/VAM/TP3/sujet_tp3.html","https://toltex.u-ga.fr/VAM/TP3/sujet__tp3.html")
   )
   ####
