@@ -214,6 +214,11 @@ test_passer<-function(){
   return(res)
 }
 
+test_egalite<-function(x,y){
+  res<-sum(abs(x-y))
+  return((res<=1e-15)&!is.nan(res))
+}
+
 freq_emp<-function(){
     e <- get("e", parent.frame())
     if(e$vs$qdsup_OQ) {
@@ -221,5 +226,5 @@ freq_emp<-function(){
     } else {
       res<-mean(get(e$vs$delta_OQ) <= e$vs$d_OQ)
     }
-    return(e$val==res)
+    return(test_egalite(e$val,res))
 }

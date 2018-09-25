@@ -23,6 +23,11 @@ getLog <- function(){
   getState()$log
 }
 
+test_egalite<-function(x,y){
+  res<-sum(abs(x-y))
+  return((res<=1e-15)&!is.nan(res))
+}
+
 genere_data<-function(vs){
   data<-replicate(vs$m2, mean(rbinom(vs$n,1,vs$p0)))
   iddata<-sample(1:vs$m1,6,replace=FALSE)
@@ -209,7 +214,7 @@ qualite_estimation<-function(){
     } else {
       res<-sd(get(e$vs$nom_data))/sqrt(e$vs$n)
     }
-    return(e$val==res)
+    return(test_egalite(e$val,res))
 }
 
 int_conf<-function(){
@@ -220,5 +225,5 @@ int_conf<-function(){
     } else {
       es<-sd(get(e$vs$nom_data))/sqrt(e$vs$n)
     }
-    return(e$val==moy+c(-1,1)*qnorm((100-(100-e$vs$niv_confiance)/2)/100)*es)
+    return(test_egalite(e$val,moy+c(-1,1)*qnorm((100-(100-e$vs$niv_confiance)/2)/100)*es))
 }
