@@ -85,6 +85,7 @@ num_etud<-function(){
       y<-which(z==1)-(0:(vs$n-1))*5-1
 
       if(vs$prop) assign(vs$nom_data,as.integer(y>0),.GlobalEnv) else assign(vs$nom_data,y,.GlobalEnv)
+      e$log$skipped<-c()#pour corriger un bugg swirl: quand on fait deux leçons d'affile, il y a FALSE à l'initialisation de skipped, alors que ce n'est pas le cas pour la première leçon ???
       e$log$mon_skip<-e$log$skipped
     }
   }
@@ -125,11 +126,11 @@ if(selection %in% 1:5){
   }
 
   p <- function(x, p, f, l = length(x)){if(l < p){x <- c(x, rep(f, p - l))};x}
+  e$log$skipped[1:length(e$log$mon_skip)]<-e$log$mon_skip
 
   temp <- tempfile()
   log_ <- getLog()
   nrow_ <- max(unlist(lapply(log_, length)))
-  e$log$skipped[1:length(e$log$mon_skip)]<-e$log$mon_skip
   log_tbl <- data.frame( p(log_$question_number, nrow_, NA),
                          p(log_$correct, nrow_, NA),
                          p(log_$attempt, nrow_, NA),
