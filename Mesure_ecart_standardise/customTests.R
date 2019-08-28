@@ -23,6 +23,18 @@ getLog <- function(){
   getState()$log
 }
 
+Choix_sujet_etudiant<-function(num_etud,nb_sujet=5){
+  #return(floor((num_etud-floor(num_etud/100)*100)/20))
+  set.seed(num_etud)
+  #return(sample(1:length(nb_sujet),size=2)[2])
+  #Pour garantir que les redoublants n'ont pas le meme sujet que l annee derniere
+  #L'annee prochaine reprendre l'instruction precedente pouir le garantir
+  sujet_prec<-sample(1:length(nb_sujet),size=2)[2]
+  sujet_indice<-sample(1:(nb_sujet-1),1)
+  sujet_possibles<-setdiff(1:nb_sujet,sujet_prec)
+  return(sujet_possibles[sujet_indice])
+}
+
 genere_data<-function(vs){
   data<-replicate(vs$m2, mean(rbinom(vs$n,1,vs$p0)))
   iddata<-sample(1:vs$m1,6,replace=FALSE)
@@ -76,8 +88,7 @@ num_etud<-function(){
     res<-readline("Tapez 1, si c'est bien le cas, sinon appuyez sur n'importe quelle autre touche. Puis validez.")==1
     if (res){
       e$num_etud<-num_etud
-      set.seed(num_etud)
-      e$num_sujet <- sample(1:length(variable_sujet[[1]]),size=2)[2]
+      e$num_sujet <- Choix_sujet_etudiant(num_etud,length(variable_sujet[[1]]))
       set.seed(num_etud)
       vs<-variable_sujet
       for (i in 1:length(vs)){
